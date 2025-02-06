@@ -4,20 +4,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Colores base para tu portafolio:
-        'background': '#f5f5dc',  // Beige claro de fondo
-        'text': '#202224',        // Texto en negro
-        'primary': '#556b2f',     // Verde musgo principal
-        // Colores llamativos para acentos y derivaciones:
-        'accent': '#8fbc8f',      // Verde claro
-        'secondary': '#6b8e23',   // Verde oliva oscuro
-        'highlight': '#deb887',   // Beige brillante
-        'border': '#dcdcdc',      // Gris claro para bordes
-        'glass': 'rgba(245, 245, 220, 0.6)' // Efecto sutil tipo vidrio translúcido
+        'background': '#ffffff', // Fondo blanco
+        'text': '#0d0d0d',       // Texto oscuro
+        'primary': '#002855',    // Azul marino profundo
+        'accent': '#004080',     // Azul oscuro para acentos
+        'secondary': '#001f3f',  // Azul casi negro para elementos secundarios
+        'highlight': '#336699',  // Azul oscuro pero con más contraste
+        'border': '#dee2e6',     // Gris claro para bordes
+        'glass': 'rgba(255, 255, 255, 0.6)' // Efecto vidrio translúcido
       },
       fontFamily: {
-        'montserrat': ['Montserrat', 'sans-serif'], // Tipografía Montserrat
-        'jersey': ['"Jersey 10"', 'sans-serif'], // Tipografía Jersey 10
+        'montserrat': ['Montserrat', 'sans-serif'],
+        'jersey': ['"Jersey 10"', 'sans-serif'],
       },
       animation: {
         'marquee': 'marquee 20s linear infinite',
@@ -35,22 +33,19 @@ export default {
         },
         'neon-glow': {
           'from': { 
-            textShadow: '0 0 5px #556b2f, 0 0 10px #556b2f, 0 0 15px #556b2f',
-            boxShadow: '0 0 5px #556b2f, 0 0 10px #556b2f'
+            textShadow: '0 0 5px #002855, 0 0 10px #002855, 0 0 15px #002855',
+            boxShadow: '0 0 5px #002855, 0 0 10px #002855'
           },
           'to': { 
-            textShadow: '0 0 10px #556b2f, 0 0 20px #556b2f, 0 0 30px #556b2f',
-            boxShadow: '0 0 10px #556b2f, 0 0 20px #556b2f'
+            textShadow: '0 0 10px #002855, 0 0 20px #002855, 0 0 30px #002855',
+            boxShadow: '0 0 10px #002855, 0 0 20px #002855'
           }
         }
       },
       backgroundImage: {
-        // Ejemplo de imagen de fondo o patrón; puedes reemplazar la ruta según corresponda
         'pattern': "url('/pattern.png')",
-        // Fondo con textura de arrugas
         'wrinkled': "url('/wrinkled-texture.png')",
-        // Degradado que combina verde musgo y beige claro
-        'gradient': 'linear-gradient(135deg, #556b2f 0%, #f5f5dc 100%)'
+        'gradient': 'linear-gradient(135deg, #002855 0%, #ffffff 100%)'
       },
       backdropBlur: {
         xs: '2px',

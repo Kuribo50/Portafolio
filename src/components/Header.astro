@@ -1,111 +1,136 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title,
+  description = "Martin - Ingeniero de Software y desarrollador Front-end"
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="bg-background font-jersey text-text antialiased transition-colors duration-300">
     <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50">
-      <!-- Barra principal del header con borde negro -->
       <div class="bg-background border-b border-black">
         <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-          <a
-            href="/"
-            class="text-2xl font-medium tracking-tight hover:text-accent transition-colors"
-          >
+          <a href="/" class="text-2xl tracking-tight hover:text-accent transition-colors">
             martinberoiza<span class="text-accent">.</span>
           </a>
 
           <!-- Menú para Desktop -->
           <nav class="hidden md:block">
             <ul class="flex space-x-12">
-              <li>
-                <a
-                  href="#Inicio"
-                  class="text-text hover:text-accent transition-colors text-sm tracking-widest"
-                >
-                  INICIO
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#proyectos"
-                  class="text-text hover:text-accent transition-colors text-sm tracking-widest"
-                >
-                  PROYECTOS
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#sobre-mi"
-                  class="text-text hover:text-accent transition-colors text-sm tracking-widest"
-                >
-                  SOBRE MI
-                </a>
-              </li>
+              <li><a href="#Inicio" class="menu-link">INICIO</a></li>
+              <li><a href="#proyectos" class="menu-link">PROYECTOS</a></li>
+              <li><a href="#sobre-mi" class="menu-link">SOBRE MI</a></li>
             </ul>
           </nav>
 
+          <!-- Botón del Modo Noche -->
+          <button id="theme-toggle" class="hover:text-accent transition-colors" aria-label="Cambiar tema">
+            🌙
+          </button>
+
           <!-- Botón del Menú para Mobile -->
-          <button
-            id="menu-toggle"
-            class="md:hidden text-text hover:text-accent transition-colors"
-            aria-label="Abrir menú"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
+          <button id="menu-toggle" class="md:hidden text-text hover:text-accent transition-colors" aria-label="Abrir menú">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </button>
         </div>
       </div>
 
-      <!-- Menú Móvil Desplegable con borde superior negro -->
+      <!-- Menú Móvil -->
       <div id="mobile-menu" class="hidden md:hidden">
         <nav class="bg-background border-t border-black">
           <ul class="px-6 py-5 flex flex-col space-y-4">
-            <li>
-              <a
-                href="/"
-                class="text-text hover:text-accent transition-colors text-lg tracking-tight"
-              >
-                INICIO
-              </a>
-            </li>
-            <li>
-              <a
-                href="#proyectos"
-                class="text-text hover:text-accent transition-colors text-lg tracking-tight"
-              >
-                PROYECTOS
-              </a>
-            </li>
-            <li>
-              <a
-                href="#sobre-mi"
-                class="text-text hover:text-accent transition-colors text-lg tracking-tight"
-              >
-                SOBRE MI
-              </a>
-            </li>
+            <li><a href="/" class="menu-link text-lg">INICIO</a></li>
+            <li><a href="#proyectos" class="menu-link text-lg">PROYECTOS</a></li>
+            <li><a href="#sobre-mi" class="menu-link text-lg">SOBRE MI</a></li>
           </ul>
         </nav>
       </div>
     </header>
-    <!-- Script para controlar el despliegue del menú móvil -->
+
+    <!-- Script para Modo Noche y Menú -->
     <script>
       const menuToggle = document.getElementById("menu-toggle");
       const mobileMenu = document.getElementById("mobile-menu");
+      const themeToggle = document.getElementById("theme-toggle");
+      const html = document.documentElement;
 
       function toggleMenu() {
         mobileMenu.classList.toggle("hidden");
       }
 
+      function toggleTheme() {
+        if (html.classList.contains("dark")) {
+          html.classList.remove("dark");
+          html.classList.add("light");
+          localStorage.setItem("theme", "light");
+        } else {
+          html.classList.remove("light");
+          html.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
       menuToggle.addEventListener("click", toggleMenu);
+      themeToggle.addEventListener("click", toggleTheme);
+
+      // Cargar el tema guardado
+      if (localStorage.getItem("theme") === "dark") {
+        html.classList.add("dark");
+      } else {
+        html.classList.add("light");
+      }
     </script>
   </body>
 </html>
+
+<style is:global>
+  :root {
+    --scroll-behavior: smooth;
+  }
+  html { scroll-behavior: var(--scroll-behavior); }
+
+  /* Tema Claro */
+  .light {
+    --background: #f5f5dc;
+    --text: #202224;
+    --accent: #8fbc8f;
+  }
+
+  /* Tema Oscuro */
+  .dark {
+    --background: #121212;
+    --text: #e0e0e0;
+    --accent: #76c7c0;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text);
+  }
+
+  .menu-link {
+    color: var(--text);
+    transition: color 0.3s;
+  }
+
+  .menu-link:hover {
+    color: var(--accent);
+  }
+</style>
