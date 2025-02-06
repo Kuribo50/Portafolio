@@ -1,0 +1,36 @@
+{
+  "name": "@example/basics",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.0.17",
+    "@fontsource/montserrat": "^5.1.1",
+    "@iconify-icons/mdi": "^1.2.48",
+    "@iconify-json/logos": "^1.2.4",
+    "@iconify-json/vscode-icons": "^1.2.11",
+    "@iconify/react": "^5.2.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "aos": "^2.3.4",
+    "astro": "^4.16.18",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0",
+    "rehype-external-links": "^3.0.0",
+    "tailwindcss": "^3.4.1",
+    "tailwindcss-filters": "^3.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/react": "^4.2.0",
+    "@astrojs/tailwind": "^5.1.5",
+    "astro-icon": "^1.1.5"
+  }
+}

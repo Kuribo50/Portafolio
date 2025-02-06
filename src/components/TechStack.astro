@@ -1,0 +1,72 @@
+---
+const technologies = [
+  { name: 'HTML', icon: '/icons/html.svg', border: 'hover:border-orange-200', bg: 'hover:bg-orange-100' },
+  { name: 'CSS', icon: '/icons/css.svg', border: 'hover:border-blue-200', bg: 'hover:bg-blue-100' },
+  { name: 'JavaScript', icon: '/icons/js.svg', border: 'hover:border-yellow-200', bg: 'hover:bg-yellow-100' },
+  { name: 'TypeScript', icon: '/icons/typeScript.svg', border: 'hover:border-blue-300', bg: 'hover:bg-blue-100' },
+  { name: 'Next.js', icon: '/icons/nextjs.svg', border: 'hover:border-gray-300', bg: 'hover:bg-gray-100' },
+  { name: 'Astro', icon: '/icons/astro.svg', border: 'hover:border-orange-200', bg: 'hover:bg-orange-100' },
+  { name: 'React', icon: '/icons/react.svg', border: 'hover:border-cyan-200', bg: 'hover:bg-cyan-100' },
+  { name: 'React Native', icon: '/icons/reactnative.svg', border: 'hover:border-red-200', bg: 'hover:bg-red-100' },
+  { name: 'Python', icon: '/icons/python.svg', border: 'hover:border-green-200', bg: 'hover:bg-green-100' },
+  { name: 'Docker', icon: '/icons/docker.svg', border: 'hover:border-blue-200', bg: 'hover:bg-blue-100' },
+  { name: 'MySQL', icon: '/icons/mysql.svg', border: 'hover:border-blue-200', bg: 'hover:bg-blue-300' },
+  { name: 'PostgreSQL', icon: '/icons/postgresql.svg', border: 'hover:border-blue-200', bg: 'hover:bg-blue-100' },
+  { name: 'Git', icon: '/icons/git.svg', border: 'hover:border-red-200', bg: 'hover:bg-red-100' },
+  { name: '.NET', icon: '/icons/.net.svg', border: 'hover:border-purple-200', bg: 'hover:bg-purple-100' },
+  { name: 'Kotlin', icon: '/icons/kotlin.svg', border: 'hover:border-purple-200', bg: 'hover:bg-purple-100' },
+  { name: 'Django', icon: '/icons/dj.svg', border: 'hover:border-green-200', bg: 'hover:bg-green-100' }
+];
+---
+
+<style>
+  /* Animación de marquee continua */
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  .marquee {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+  }
+  /* Separa cada bloque para mayor legibilidad */
+  .marquee span {
+    margin-right: 3rem;
+  }
+</style>
+
+<section class="my-32 px-4">
+  <!-- Marquee de tecnologías -->
+  <div class="marquee-wrapper w-full overflow-hidden mb-16">
+    <div class="marquee">
+      {Array(5).fill(null).map(() => (
+        <span class="text-secondary text-lg tracking-[1em] uppercase font-medium">
+          Tecnologías <span class="text-accent">★</span>
+        </span>
+      ))}
+    </div>
+  </div>
+  
+  <!-- Grid de tecnologías -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 max-w-8xl mx-auto">
+    {technologies.map((tech) => (
+      <div class={`group border-2 border-dashed border-text/10 ${tech.border} rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg backdrop-blur-sm ${tech.bg}`}>
+        <div class="flex items-center gap-4">
+          <img
+            src={tech.icon}
+            alt={tech.name}
+            class="w-8 h-8 object-contain filter grayscale transition-all duration-300 group-hover:grayscale-0"
+          />
+          <span class="font-medium text-text transition-colors duration-300">
+            {tech.name}
+          </span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

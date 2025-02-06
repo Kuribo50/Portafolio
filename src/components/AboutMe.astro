@@ -1,0 +1,35 @@
+---
+import Timeline from './Timeline.astro';
+---
+
+<section id="sobre-mi" class="py-32 bg-gradient-to-b">
+  <div class="max-w-4xl mx-auto translate-y-0 px-4 space-y-12">
+    <!-- Card 1: Sobre mí -->
+    <div class="bg-white rounded-xl shadow-lg p-8 transform transition-transform hover:scale-105 translate-x-0 md:translate-x-10 lg:translate-x-20">
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="flex-1">
+          <h2 class="text-5xl md:text-6xl font-bold tracking-tight text-center md:text-left text-gray-900 drop-shadow">
+            Sobre mí <span class="text-accent/60">✤</span>
+          </h2>
+          <div class="mt-8 text-lg leading-relaxed text-gray-700">
+            <p class="mb-6">
+              ¡Hola! Soy Martin Beroiza, tengo 22 años y soy analista programador. Me apasiona desarrollar software de calidad y trabajar con nuevas tecnologías. Siempre busco combinar creatividad y funcionalidad para ofrecer experiencias web únicas y accesibles.
+            </p>
+            <p>
+              Actualmente, me dedico a crear sitios web estáticos y dinámicos usando <span class="font-medium text-gray-900">Next.js</span> y <span class="font-medium text-gray-900">Astro</span>, y también incursiono en el mundo de la <span class="font-medium text-gray-900">inteligencia artificial generativa</span> con Python, lo que me permite explorar nuevas soluciones innovadoras.
+            </p>
+          </div>
+        </div>
+        <div class="flex-shrink-0">
+        </div>
+      </div>
+    </div>
+    <!-- Card 2: Formación y Experiencia -->
+    <div class="bg-white rounded-xl shadow-lg p-8 transform transition-transform hover:scale-105 translate-x-0 md:-translate-x-10 lg:-translate-x-20">
+      <h3 class="text-4xl font-bold mb-16 tracking-tight text-center text-gray-900">
+        Formación y<br />Experiencia
+      </h3>
+      <Timeline />
+    </div>
+  </div>
+</section>

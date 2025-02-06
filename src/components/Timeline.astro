@@ -1,0 +1,52 @@
+---
+const experiences = [
+  {
+    title: "Analista Programador",
+    date: "2022 - 2024",
+    description:
+      "Licenciado en Análisis y Programación del Instituto Profesional Virginio Gómez, con formación integral en desarrollo de software, gestión de bases de datos y tecnologías para la creación de soluciones informáticas eficientes. Durante mi formación, adquirí experiencia en el desarrollo de aplicaciones web, móviles y la implementación de metodologías ágiles.",
+    icon: "/icons/time-analista.svg"
+  },
+  {
+    title: "Práctica Profesional",
+    date: "2024",
+    description:
+      "Realicé mi práctica profesional en el SERVIU de la Región del Biobío, donde desarrollé un sistema de gestión de bodega para el equipo de TI. Implementé funcionalidades para la administración de stock, registro de movimientos y control de préstamos de equipos, utilizando Django REST para el backend y Next.js para el frontend.",
+    icon: "/icons/trabajo.svg"
+  }
+];
+---
+
+<!-- Contenedor principal del timeline -->
+<div class="space-y-12">
+  {experiences.map((item, index) => (
+    <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+      <!-- Para móviles: Mostrar la fecha como etiqueta encima -->
+      <div class="md:hidden">
+        <span class="inline-block bg-accent/10 text-accent text-sm font-semibold px-3 py-1 rounded">
+          {item.date}
+        </span>
+      </div>
+      <!-- Para desktop: Mostrar el marcador del timeline -->
+      <div class="hidden md:flex flex-col items-center">
+        <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+          <img src={item.icon} alt={`${item.title} icon`} class="w-6 h-6" />
+        </div>
+        {index !== experiences.length - 1 && (
+          <div class="flex-1 w-px bg-gray-300 mt-2"></div>
+        )}
+      </div>
+      <!-- Contenido del evento -->
+      <div class="flex-1">
+        <div class="flex items-center gap-4 mb-2">
+          <h4 class="text-xl font-medium text-text">{item.title}</h4>
+          <!-- En desktop se muestra la fecha junto al título -->
+          <span class="hidden md:inline-block text-sm text-accent/80">
+            {item.date}
+          </span>
+        </div>
+        <p class="text-text/80 leading-relaxed">{item.description}</p>
+      </div>
+    </div>
+  ))}
+</div>
