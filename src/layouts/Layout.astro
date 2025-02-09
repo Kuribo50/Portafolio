@@ -9,10 +9,7 @@ interface Props {
   description?: string;
 }
 
-const { 
-  title,
-  description = "Martin - Ingeniero de Software y desarrollador Front-end"
-} = Astro.props;
+const description = Astro.props.description ?? "Martin - Ingeniero de Software y desarrollador Front-end";
 ---
 
 <!doctype html>
@@ -22,20 +19,43 @@ const {
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{Astro.props.title}</title>
     <meta name="description" content={description} />
   </head>
-  <body class="bg-background font-montserrat text-text antialiased">
-    <slot />
+  <body class="relative bg-background font-montserrat text-text antialiased">
+    <!-- Capa de fondo -->
+    <div class="fixed inset-0 bg-overlay"></div>
+
+    <!-- Contenido principal -->
+    <div class="relative z-10">
+      <slot />
+    </div>
   </body>
 </html>
 
 <style is:global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
   :root {
     --scroll-behavior: smooth;
   }
   
   html {
     scroll-behavior: smooth;
+  }
+
+  @layer components {
+    .bg-overlay::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-color: #e2e3e4;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 700' width='700' height='700'%3E%3Cdefs%3E%3CradialGradient id='gggrain-gradient' r='0.5'%3E%3Cstop offset='0%25' stop-color='hsl(230, 76%25, 37%25)'/%3E%3Cstop offset='50%25' stop-color='%231a7cee'/%3E%3Cstop offset='100%25' stop-color='hsla(167, 55%25, 56%25, 1.00)'/%3E%3C/radialGradient%3E%3Cfilter id='gggrain-filter' x='-20%25' y='-20%25' width='140%25' height='140%25' filterUnits='objectBoundingBox' primitiveUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.57' numOctaves='2' seed='202' stitchTiles='stitch' x='0%25' y='0%25' width='100%25' height='100%25' result='turbulence'/%3E%3CfeColorMatrix type='saturate' values='0' x='0%25' y='0%25' width='100%25' height='100%25' in='turbulence' result='colormatrix'/%3E%3CfeComponentTransfer x='0%25' y='0%25' width='100%25' height='100%25' in='colormatrix' result='componentTransfer'%3E%3CfeFuncR type='linear' slope='3'/%3E%3CfeFuncG type='linear' slope='3'/%3E%3CfeFuncB type='linear' slope='3'/%3E%3C/feComponentTransfer%3E%3CfeColorMatrix x='0%25' y='0%25' width='100%25' height='100%25' in='componentTransfer' result='colormatrix2' type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 25 -17'/%3E%3C/filter%3E%3C/defs%3E%3Cg%3E%3Crect width='100%25' height='100%25' fill='url(%23gggrain-gradient)'/%3E%3Crect width='100%25' height='100%25' fill='transparent' filter='url(%23gggrain-filter)' opacity='1' style='mix-blend-mode: soft-light'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+    }
   }
 </style>

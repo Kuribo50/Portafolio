@@ -4,14 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        'background': '#ffffff', // Fondo blanco
         'text': '#0d0d0d',       // Texto oscuro
         'primary': '#002855',    // Azul marino profundo
         'accent': '#004080',     // Azul oscuro para acentos
         'secondary': '#001f3f',  // Azul casi negro para elementos secundarios
-        'highlight': '#336699',  // Azul oscuro pero con más contraste
+        'highlight': '#336699',  // Azul con mayor contraste
         'border': '#dee2e6',     // Gris claro para bordes
-        'glass': 'rgba(255, 255, 255, 0.6)' // Efecto vidrio translúcido
+        'glass': 'rgba(255, 255, 255, 0.6)', // Efecto vidrio translúcido
+        'white': '#ffffff',      // Color blanco
       },
       fontFamily: {
         'montserrat': ['Montserrat', 'sans-serif'],
